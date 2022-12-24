@@ -1,12 +1,8 @@
-<h1>Профиль</h1>
+<h1>Редактирование профиля</h1>
  
-<%#<%= render "form", user: @user %>
-<div id="edit_profile_div">
-
-</div>
+<%= render "edit_form", user: @user %>
 <br>
 
 <div>
-  <%= link_to "Изменить", @user %> |
   <%= link_to "Назад", profile_path %>
 </div>

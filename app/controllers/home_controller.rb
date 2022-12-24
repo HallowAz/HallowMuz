@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   def home_aut
     if session[:current_user_id].nil?
       redirect_to root_path
+      return
     end
   end
 

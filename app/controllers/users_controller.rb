@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     if user_params[:password] == user_params[:passwordrepeat]
-      new_user_params = user_params.permit(:login, :password)
+      new_user_params = user_params.permit(:login, :password, :firstname, :avatar)
+      new_user_params[:avatar] = "base_avatar"
       @user = User.new(new_user_params)
       respond_to do |format|
         if @user.save
@@ -41,9 +42,19 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    new_user_params = user_params.permit(:login, :password)
+    if params[:password] == "" || params[:password].nil?
+      new_user_params = user_params.permit(:login, :firstname, :avatar)
+    else
+      new_user_params = user_params.permit(:login, :password, :firstname, :avatar)
+    end
+    new_user_params[:avatar] = new_user_params[:avatar].original_filename.delete('.png') unless new_user_params[:avatar].nil?
     respond_to do |format|
       if @user.update(new_user_params)
+        unless new_user_params[:avatar].nil?
+          File.open(Rails.root.join('public', 'avatars', user_params[:avatar].original_filename.gsub(' ', '_')), 'wb') do |file|
+            file.write(user_params[:avatar].read)
+          end
+        end
         format.html { redirect_to user_url(@user), notice: "Данные были успешно изменены" }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -71,6 +82,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-        params.require(:user).permit(:login, :password, :passwordrepeat)
+        params.require(:user).permit(:login, :password, :passwordrepeat, :firstname, :avatar)
     end
 end

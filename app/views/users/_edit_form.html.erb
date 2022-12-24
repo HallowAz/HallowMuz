@@ -10,12 +10,16 @@
       </ul>
     </div>
   <% end %>
-
-
+  <div class="profile_avatar">
+    <img src="/avatars/<%=user.avatar%>.png" height="80%" alt="Ава">
+  </div>
+  <br>
+    <%=form.file_field(:avatar)%><br><br>
   <div>
     <%= form.label 'Псевдоним', style: "display: block" %>
     <%= form.text_field :firstname %>
   </div>
+  <br>
   <div>
     <%= form.label 'Электронная почта', style: "display: block" %>
     <%= form.email_field :login %>
@@ -27,11 +31,6 @@
   </div>
   <br>
   <div>
-    <%= form.label 'Повторите пароль', style: "display: block" %>
-    <%= form.password_field :passwordrepeat %>
-  </div>
-  <br>
-  <div>
-    <%= form.submit('Создать') %>
+    <%= form.submit('Изменить') %>
   </div>
 <% end %>

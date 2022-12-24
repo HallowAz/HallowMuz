@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_23_195245) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_24_183926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_195245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "avatar"
     t.index ["user_id"], name: "index_singers_on_user_id"
   end
 
@@ -70,6 +71,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_195245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "library", default: [], array: true
+    t.string "firstname"
+    t.string "avatar"
   end
 
 end

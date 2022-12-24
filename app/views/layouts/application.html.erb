@@ -34,6 +34,8 @@
             </div>
             <div class = "header_item headerButton"><%= link_to 'Выйти', session_log_out_path%>
             </div>
+            <div class = "header_item headerProfileIcon"><img src="/avatars/<%=@user[:avatar]%>.png" height="80px">
+            </div>
         </div>
       </div>
     <%else%>
@@ -77,5 +79,10 @@
                 </audio>
             </div>
     </div>
+    <script>
+      function test() {
+        alert(5)
+      }
+    </script>
   </body>
 </html>

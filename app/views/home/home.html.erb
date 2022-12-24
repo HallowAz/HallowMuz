@@ -5,7 +5,7 @@
         <%Song.all.reverse.each do |song|%>
             <div class="song">
                 <p><%=song[:name]%></p>
-                <audio 
+                <audio
                 controls
                 src="/music/<%=song[:name].gsub(' ', '_')%>.mp3">
                     Your browser does not support the 
@@ -26,6 +26,8 @@
         <%Singer.all.each do |singer|%>
             <div class="singer">
                 <%=form_with url: singers_profile_path, method: :get do |form|%>
+                    <div class = "SingerIcon"><img src="/singer_avatars/<%=singer[:name].gsub(' ', '_')%>.png" height="80px">
+                    </div>
                     <%=form.hidden_field :name, value: singer[:name]%>
                     <%=form.submit(singer[:name])%>
                 <%end%>
@@ -35,6 +37,5 @@
             <%break if count == 15%>
         <%end%>
     </div>
-
 </div>
 

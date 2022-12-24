@@ -1,7 +1,8 @@
 <h1>Профиль</h1>
 <div class="profile">
-<div class="profile_avatar"><img src="avatars/skull.png" alt="Ава"></div>
-<h2><%=@user[:login]%></h2>
+<div class="profile_avatar"><img src="/avatars/<%=@user[:avatar]%>.png" height="80%" alt="Ава"></div>
+<h2><%=@user[:firstname]%></h2>
+<h4>Почта <%=@user[:login]%> </h4>
 </div>
 <br>
 
