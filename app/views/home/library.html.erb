@@ -4,9 +4,9 @@
     <h3>Библиотека</h3>
         <%count = 0%>
         <% @music.reverse.each do |song|%>
-            <div class="song">
+            <div class="song" id ="song_number_<%=count%>">
                 <p><%=song[:name]%></p>
-                <audio controls src="/music/<%=song[:name].gsub(' ', '_')%>.mp3">
+                <audio controls src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="onplayer(<%=count%>)">
                 </audio>
                 <%=form_with url: deleting_path do |form|%>
                 <%=form.hidden_field :song_id, value: song[:id] %>

@@ -18,4 +18,7 @@ class ApplicationController < ActionController::Base
       @user = User.find_by_id(session[:current_user_id])
     end
 
+    def player_on
+      debugger
+    end
 end

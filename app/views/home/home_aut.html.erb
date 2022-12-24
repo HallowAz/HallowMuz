@@ -3,11 +3,11 @@
         <h3>Новинки</h3>
         <%count = 0%>
         <%Song.all.reverse.each do |song|%>
-            <div class="song">
+            <div class="song" id ="song_number_<%=count%>">
                 <p><%=song[:name]%></p>
                 <audio
                 controls
-                src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="stop_playing(<%=count%>)">
+                src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="onplayer(<%=count%>)">
                     Your browser does not support the 
                     <code>audio</code> element.
                 </audio>
