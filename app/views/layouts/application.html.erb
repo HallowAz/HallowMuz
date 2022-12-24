@@ -80,8 +80,15 @@
             </div>
     </div>
     <script>
-      function test() {
-        alert(5)
+      function stop_playing(index) {
+        arr = document.getElementsByTagName('audio')
+        for (i = 0; i < arr.length; i++){
+          if (i != index) {
+            arr[i].pause()
+            arr[i].currentTime = 0
+          }
+
+        }
       }
     </script>
   </body>

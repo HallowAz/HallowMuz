@@ -33,3 +33,7 @@
 /public/music
 
 /config/database.yml
+
+/public/avatars
+
+/public/singer_avatars

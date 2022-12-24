@@ -7,7 +7,7 @@
                 <p><%=song[:name]%></p>
                 <audio
                 controls
-                src="/music/<%=song[:name].gsub(' ', '_')%>.mp3">
+                src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="stop_playing(<%=count%>)">
                     Your browser does not support the 
                     <code>audio</code> element.
                 </audio>
