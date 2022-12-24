@@ -1,0 +1,11 @@
+<h1>Профиль</h1>
+<div class="profile">
+<div class="profile_avatar"><img src="avatars/skull.png" alt="Ава"></div>
+<h2><%=@user[:login]%></h2>
+</div>
+<br>
+
+<div>
+  <%= link_to "Редактировать данные", edit_user_path(@user) %> |
+  <%= link_to "Назад", home_aut_path %>
+</div>

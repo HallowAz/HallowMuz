@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Player</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+  <%unless session[:current_user_id].nil?%>
+      <div class="header">
+        <div class="header_section">
+            <div class = "header_item headerlogo">
+                HallowMuz
+            </div>
+            <div class = "header_item headerButton"><%= link_to 'Главная', home_aut_path%>
+            </div>
+            <div class = "header_item headerButton"><%= link_to 'Моя музыка', library_path%>
+            </div>
+            <div class = "header_item">
+            <%=form_with url: search_path, method: :get do |form|%>
+                <%=form.label('Поиск')%>
+                <%=form.text_field(:str)%>
+                <%=form.submit('Найти')%>
+            <%end%>
+            </div>
+        </div>
+        <div class="header_section">
+            <div class = "header_item headerButton"><%= link_to 'Профиль', profile_path%>
+            </div>
+            <div class = "header_item headerButton"><%= link_to 'Выйти', session_log_out_path%>
+            </div>
+        </div>
+      </div>
+    <%else%>
+      <div class="header">
+        <div class="header_section">
+            <div class = "header_item headerlogo">
+                HallowMuz
+            </div>
+            <div class = "header_item headerButton"><%= link_to 'Главная', root_path%>
+            </div>
+            <div class = "header_item headerButton"><%= link_to 'Моя музыка', library_path%>
+            </div>
+            <div class = "header_item">
+            <%=form_with url: search_path, method: :get do |form|%>
+                <%=form.label('Поиск')%>
+                <%=form.text_field(:str)%>
+                <%=form.submit('Найти')%>
+            <%end%>
+            </div>        
+        </div>
+        <div class="header_section">
+            <div class = "header_item headerButton"><%= link_to 'Войти', autorization_path%>
+            </div>
+            <div class = "header_item headerButton"><%= link_to 'Регистрация', new_user_path%>
+            </div>
+        </div>
+      </div>
+    <%end%>
+    <div class="main_body">
+    <%= yield %>
+    </div>
+    <div class="player">
+        <%song = Song.last%>
+            <div class="song">
+                <p><%=song[:name]%></p>
+                <audio 
+                controls
+                src="/music/<%=song[:name].gsub(' ', '_')%>.mp3">
+                    Your browser does not support the 
+                    <code>audio</code> element.
+                </audio>
+            </div>
+    </div>
+  </body>
+</html>

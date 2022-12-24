@@ -1,0 +1,17 @@
+<h3>Результаты поиска</h3>
+<div class="search_res">
+    <% @search_muz.each do |song|%>
+        <div class="song">
+            <p><%=song[:name]%></p>
+            <audio controls src="/music/<%=song[:name].gsub(' ', '_')%>.mp3">
+            </audio>
+            <%=form_with url: adding_path do |form|%>
+            <%=form.hidden_field :song_id, value: song[:id] %>
+            <%=form.submit('Добавить')%>
+            <%end%>
+        </div> 
+    <%end%>
+</div>
+<br>
+<br>
+<%= link_to "Назад", home_aut_path %>

@@ -1,0 +1,22 @@
+Rails.application.routes.draw do
+  get 'singers/profile'
+  resources :users
+  get '/autorization', to:'session#autorization'
+  get 'session/sign_up'
+  get 'session/log_out'
+  root 'home#home'
+  get '/profile', to: 'home#profile'
+  get '/library', to: 'home#library'
+  get '/search', to: 'home#search'
+  get '/home_aut', to: 'home#home_aut'
+  post '/checking', to: 'session#checking'
+  post '/log_out', to: 'home#log_out'
+  post '/adding', to: 'home#adding'
+  post '/deleting', to: 'home#deleting'
+  get '/load', to: 'home#load'
+  post '/after_load', to: 'home#after_load'
+  get '/singers/profile'
+  get '/creating_playlist', to: 'home#creating_playlist'
+  post '/creating_playlist_after', to: 'home#creating_playlist_after'
+  post '/users/edit_form'
+end

@@ -1,0 +1,29 @@
+<%#<%= render json: Song.find_by(id:1)%>
+<div class="lib">
+    <div class="all_my_songs">
+    <h3>Библиотека</h3>
+        <%count = 0%>
+        <% @music.reverse.each do |song|%>
+            <div class="song">
+                <p><%=song[:name]%></p>
+                <audio controls src="/music/<%=song[:name].gsub(' ', '_')%>.mp3">
+                </audio>
+                <%=form_with url: deleting_path do |form|%>
+                <%=form.hidden_field :song_id, value: song[:id] %>
+                <%=form.hidden_field :count, value: count %>
+                <%=form.submit('Удалить')%>
+                <%end%>
+            </div> 
+            <%count += 1%>
+        <%end%>
+        <br><br>
+    <%=link_to 'Загрузить песню', load_path%><br><br>
+    </div>
+    <div class="playlists">
+        <h3>Плейлисты</h3>
+        <%=link_to 'Создать плейлист', creating_playlist_path%>
+    </div>
+</div>
+<br>
+
+<%=link_to 'Назад', home_aut_path%>

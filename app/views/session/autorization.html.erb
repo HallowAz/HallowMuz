@@ -1,0 +1,14 @@
+<h3>Авторизация</h3>
+<%= flash[:notice]%>
+
+<%= form_with url: checking_path do |form|%>
+<%= form.label('Логин')%><br>
+<%= form.text_field(:login)%> <br> <br>
+<%= form.label('Пароль')%><br>
+<%= form.password_field(:password)%><br><br>
+<%= form.submit("Войти", id: 'aut_button')%>
+<%end%>
+<br>
+<%=link_to 'Зарегестрироваться', new_user_path, id: 'sign_up_link'%>
+<br><br>
+<%=link_to 'Назад', root_path%>

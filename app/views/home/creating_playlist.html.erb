@@ -1,0 +1,6 @@
+<h3>Создание плейлиста</h3>
+<%=form_with url: creating_playlist_after_path do |form|%>
+  <%=form.label('Название') %>
+  <%=form.text_field :name%>
+  <%=form.submit('Создать')%>
+<%end%>
