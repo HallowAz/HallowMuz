@@ -64,21 +64,28 @@
         </div>
       </div>
     <%end%>
+
+
+
     <div class="main_body">
     <%= yield %>
     </div>
-    <div class="player">
-        <%song = Song.last%>
-            <div class="song" id="current_audio_div">
-                <p id="current_song_name"><%=song[:name]%></p>
-                <audio 
-                controls
-                src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="current_audio">
-                    Your browser does not support the 
-                    <code>audio</code> element.
-                </audio>
-            </div>
-    </div>
+    
+    
+    <%if @player_on%>
+      <div class="player">
+          <%song = Song.last%>
+              <div class="song" id="current_audio_div">
+                  <p id="current_song_name"><%=song[:name]%></p>
+                  <audio 
+                  controls
+                  src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="current_audio">
+                      Your browser does not support the 
+                      <code>audio</code> element.
+                  </audio>
+              </div>
+      </div>
+    <%end%>
     <script>
       function stop_playing(index) {
         arr = document.getElementsByTagName('audio')
