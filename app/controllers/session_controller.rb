@@ -4,7 +4,6 @@ class SessionController < ApplicationController
 
   def checking
     User.all.map do |elem|
-      #if elem.login == params[:login] && elem.password == Digest::SHA1.hexdigest(params[:password])
       if elem.login == params[:login] && elem.password == params[:password]
           session[:current_user_id] = elem.id
           redirect_to home_aut_path

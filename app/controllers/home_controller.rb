@@ -52,9 +52,7 @@ class HomeController < ApplicationController
     song = params[:song]
     unless song.original_filename.match('.mp3\z').nil?
       unless song.nil? || params[:singer] == ""
-        File.open(Rails.root.join('public', 'music', song.original_filename.gsub(' ', '_')), 'wb') do |file|
-          file.write(song.read)
-        end
+        HomeHelper.save_file(song)
         new_song = Song.new(name: params[:song].original_filename.delete(".mp3"))
         singers = params[:singer].gsub(' ft. ', ', ').split(', ')
         singers.each do |singer|
