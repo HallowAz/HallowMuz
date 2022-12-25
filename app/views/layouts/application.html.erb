@@ -90,29 +90,29 @@
       function stop_playing(index) {
         arr = document.getElementsByTagName('audio')
         for (i = 0; i < arr.length; i++){
-          if (i != index) {
             arr[i].pause()
             arr[i].currentTime = 0
-          }
-
         }
+        song = document.getElementById('current_audio')
+        song.play()
       }
 
       function put_in_player(index) {
+
         div_song = document.getElementById("current_audio_div")
-        console.log(div_song)
         new_song = document.getElementById("song_number_" + String(index)).cloneNode(true)
         div_song.removeChild(div_song.children["current_song_name"])
         div_song.removeChild(div_song.children["current_audio"])
         new_song.children[0].id="current_song_name"
         new_song.children[1].id="current_audio"
         div_song.appendChild(new_song.children[0])
-        div_song.appendChild(new_song.children[0])      
+        div_song.appendChild(new_song.children[0])
+        div_song.children[1].onplay = false
         }
 
       function onplayer(index) {
-        stop_playing(index)
         put_in_player(index)
+        stop_playing(index)
       }
     </script>
   </body>
