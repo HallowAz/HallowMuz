@@ -4,7 +4,7 @@
     <%=form.text_field :singer%><br><br>
     <%=form.label('Файл (формат mp3)')%><br><br>
     <%=form.file_field(:song)%><br><br>
-    <%=form.submit('Загрузить')%>
+    <%=form.submit('Загрузить', :class => "btn btn-info")%>
 <%end%>
 <br>
 <%=flash[:notice]%><br><br>

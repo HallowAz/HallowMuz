@@ -25,7 +25,7 @@
             <%=form_with url: search_path, method: :get do |form|%>
                 <%=form.label('Поиск')%>
                 <%=form.text_field(:str)%>
-                <%=form.submit('Найти')%>
+                <%=form.submit 'Найти', :class => "btn btn-primary" %>
             <%end%>
             </div>
         </div>

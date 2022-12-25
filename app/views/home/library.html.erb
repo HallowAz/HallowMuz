@@ -11,7 +11,7 @@
                 <%=form_with url: deleting_path do |form|%>
                 <%=form.hidden_field :song_id, value: song[:id] %>
                 <%=form.hidden_field :count, value: count %>
-                <%=form.submit('Удалить')%>
+                <%=form.submit 'Удалить',  :class => "btn btn-outline-danger"%>
                 <%end%>
             </div> 
             <%count += 1%>

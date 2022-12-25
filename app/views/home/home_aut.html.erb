@@ -13,7 +13,7 @@
                 </audio>
                 <%=form_with url: adding_path do |form|%>
                 <%=form.hidden_field :song_id, value: song[:id] %>
-                <%=form.submit('Добавить')%>
+                <%=form.submit('Добавить', :class => 'btn btn-outline-success')%>
                 <%end%>
             </div>
             <%count+=1%>
@@ -30,7 +30,7 @@
                     <div class = "SingerIcon"><img src="/singer_avatars/<%=singer[:name].gsub(' ', '_')%>.png" height="80px">
                     </div>
                     <%=form.hidden_field :name, value: singer[:name]%>
-                    <%=form.submit(singer[:name])%>
+                    <%=form.submit(singer[:name], :class => 'btn btn-outline-warning')%>
                 <%end%>
                 <br><br><br>
             </div>
