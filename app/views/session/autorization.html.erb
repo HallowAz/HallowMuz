@@ -6,7 +6,7 @@
 <%= form.text_field(:login)%> <br> <br>
 <%= form.label('Пароль')%><br>
 <%= form.password_field(:password)%><br><br>
-<%= form.submit("Войти", id: 'aut_button')%>
+<%= form.submit("Войти", :class => "btn btn-info", id: 'aut_button')%>
 <%end%>
 <br>
 <%=link_to 'Зарегестрироваться', new_user_path, id: 'sign_up_link'%>

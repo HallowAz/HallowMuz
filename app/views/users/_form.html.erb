@@ -15,6 +15,8 @@
   <div>
     <%= form.label 'Псевдоним', style: "display: block" %>
     <%= form.text_field :firstname %>
+    <br>
+    <br>
   </div>
   <div>
     <%= form.label 'Электронная почта', style: "display: block" %>
@@ -32,6 +34,6 @@
   </div>
   <br>
   <div>
-    <%= form.submit('Создать') %>
+    <%= form.submit('Создать', :class => "btn btn-info") %>
   </div>
 <% end %>

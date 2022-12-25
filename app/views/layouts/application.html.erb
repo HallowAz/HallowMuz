@@ -100,6 +100,7 @@
 
       function put_in_player(index) {
         div_song = document.getElementById("current_audio_div")
+        console.log(div_song)
         new_song = document.getElementById("song_number_" + String(index)).cloneNode(true)
         div_song.removeChild(div_song.children["current_song_name"])
         div_song.removeChild(div_song.children["current_audio"])

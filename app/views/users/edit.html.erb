@@ -6,5 +6,6 @@
 <div>
   <%=flash[:notice]%>
   <br>
+  <%= button_to "Удалить страницу", @user, method: :delete, :class => "btn btn-outline-danger" %>
   <%= link_to "Назад", profile_path %>
 </div>

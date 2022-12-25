@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
     def player_on
       @player_on = true
     end
+
+    def player_of
+      @player_on = false
+    end
 end

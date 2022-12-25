@@ -1,3 +1,4 @@
+require 'digest/sha1'
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
@@ -21,22 +22,28 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    if user_params[:password] == user_params[:passwordrepeat]
-      new_user_params = user_params.permit(:login, :password, :firstname, :avatar)
-      new_user_params[:avatar] = "base_avatar"
-      @user = User.new(new_user_params)
-      respond_to do |format|
-        if @user.save
-          session[:current_user_id] = @user.id
-          format.html { redirect_to profile_path, notice: "Регистрация завершена успешно" }
-          format.json { render :show, status: :created, location: @user }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
+    if user_params[:password].length >= 6  
+      if user_params[:password] == user_params[:passwordrepeat]
+        new_user_params = user_params.permit(:login, :password, :firstname, :avatar)
+        new_user_params[:avatar] = "base_avatar"
+        new_user_params[:password] = Digest::SHA1.hexdigest(user_params[:password])
+        @user = User.new(new_user_params)
+        respond_to do |format|
+          if @user.save
+            session[:current_user_id] = @user.id
+            format.html { redirect_to profile_path, notice: "Регистрация завершена успешно" }
+            format.json { render :show, status: :created, location: @user }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @user.errors, status: :unprocessable_entity }
+            player_of
+          end
         end
+      else
+        redirect_to new_user_path, notice: "Пароли не совпадают"
       end
     else
-      redirect_to new_user_path, notice: "Пароли не совпадают"
+      redirect_to new_user_path, notice: "Пароль должен быть длинее 6 символов"
     end
   end
 
@@ -71,11 +78,8 @@ class UsersController < ApplicationController
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "Вы успешно удалили страницу." }
-      format.json { head :no_content }
-    end
+    reset_session
+    redirect_to autorization_path, notice: "Вы успешно удалили страницу"
   end
 
   private
