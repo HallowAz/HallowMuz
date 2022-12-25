@@ -5,7 +5,7 @@
 <h4>Почта <%=@user[:login]%> </h4>
 </div>
 <br>
-
+<%=flash[:notice]%>
 <div>
   <%= link_to "Редактировать данные", edit_user_path(@user) %> |
   <%= link_to "Назад", home_aut_path %>

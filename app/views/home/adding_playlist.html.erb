@@ -1,0 +1,47 @@
+<div class="body_home">
+    <div class="home_new_songs">
+        <h3>Новинки</h3>
+        <%count = 0%>
+        <%Song.all.reverse.each do |song|%>
+            <div class="song" id ="song_number_<%=count%>">
+                <p><%=song[:name]%></p>
+                <audio
+                controls
+                src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="onplayer(<%=count%>)">
+                    Your browser does not support the 
+                    <code>audio</code> element.
+                </audio>
+                <%=form_with url: after_adding_playlist_path do |form|%>
+                <%=form.hidden_field :song_id, value: song[:id] %>
+                <%=form.hidden_field :playlist_id, value: params[:playlist_id] %>
+                <%=form.submit('Добавить', :class => 'btn btn-outline-success')%>
+                <%end%>
+            </div>
+            <%count+=1%>
+            <%break if count == 10%>
+        <%end%>
+    </div>
+
+    <div class="singers">
+    <h3>Исполнители</h3>
+        <%count = 0%>
+        <%Singer.all.each do |singer|%>
+            <div class="singer">
+                <%=form_with url: singers_profile_path, method: :get do |form|%>
+                    <div class = "SingerIcon"><img src="/singer_avatars/<%=singer[:name].gsub(' ', '_')%>.png" height="80px">
+                    </div>
+                    <%=form.hidden_field :name, value: singer[:name]%>
+                    <%=form.submit(singer[:name], :class => 'btn btn-outline-warning')%>
+                <%end%>
+                <br><br><br>
+            </div>
+            <%count+=1%>
+            <%break if count == 5%>
+        <%end%>
+    </div>
+<%=form_with url: edit_playlist_path, method: :get do |form|%>
+<%=form.hidden_field :playlist_id, value: params[:playlist_id]%>
+<%=form.hidden_field :name, value: params[:name]%>
+<%=form.submit("Назад", :class => 'btn btn-outline-warning')%>
+<%end%>
+</div>

@@ -1,0 +1,32 @@
+<h3><%=params[:name]%></h3>
+<%=form_with url: adding_playlist_path, method: :get do |form|%>
+  <%=form.hidden_field :playlist_id, value: params[:playlist_id]%>
+  <%=form.hidden_field :name, value: params[:name]%>
+  <%=form.submit('Добавить песен', :class => 'btn btn-outline-success')%>
+<%end%>
+
+<%=form_with url: deleting_playlist_path do |form|%>
+  <%=form.hidden_field :playlist_id, value: params[:playlist_id]%>
+  <%=form.submit('Удалить плейлист', :class => 'btn btn-outline-danger')%>
+<%end%>
+
+<%count = 0%>
+<%@playlist.songs.each do |song|%>
+<div class="song" id ="song_number_<%=count%>">
+    <p><%=song[:name]%></p>
+    <audio controls src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="onplayer(<%=count%>)">
+    </audio>
+    <%=form_with url: deleting_path do |form|%>
+        <%=form.hidden_field :song_id, value: song[:id] %>
+        <%=form.hidden_field :count, value: count %>
+        <%=form.hidden_field :playlist_id, value: params[:playlist_id]%>
+        <%=form.submit 'Удалить',  :class => "btn btn-outline-danger"%>
+        <%end%>
+</div> 
+<%count += 1%>
+<br>
+<%end%>
+<br>
+<%=form_with url: adding_playlist_path, method: :get do |form|%>
+<%=link_to "Назад", library_path%>
+<%end%>

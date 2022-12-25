@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         if @user.save
           session[:current_user_id] = @user.id
-          format.html { redirect_to user_url(@user), notice: "Регистрация завершена успешно" }
+          format.html { redirect_to profile_path, notice: "Регистрация завершена успешно" }
           format.json { render :show, status: :created, location: @user }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -47,20 +47,24 @@ class UsersController < ApplicationController
     else
       new_user_params = user_params.permit(:login, :password, :firstname, :avatar)
     end
+    if new_user_params[:avatar].nil? || new_user_params[:avatar].original_filename.match('.png') != nil
     new_user_params[:avatar] = new_user_params[:avatar].original_filename.delete('.png') unless new_user_params[:avatar].nil?
-    respond_to do |format|
-      if @user.update(new_user_params)
-        unless new_user_params[:avatar].nil?
-          File.open(Rails.root.join('public', 'avatars', user_params[:avatar].original_filename.gsub(' ', '_')), 'wb') do |file|
-            file.write(user_params[:avatar].read)
+      respond_to do |format|
+        if @user.update(new_user_params)
+          unless new_user_params[:avatar].nil?
+            File.open(Rails.root.join('public', 'avatars', user_params[:avatar].original_filename.gsub(' ', '_')), 'wb') do |file|
+              file.write(user_params[:avatar].read)
+            end
           end
+          format.html { redirect_to user_url(@user), notice: "Данные были успешно изменены" }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
         end
-        format.html { redirect_to user_url(@user), notice: "Данные были успешно изменены" }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    else
+      redirect_to edit_user_path(@user), notice: 'Формат должен быть png'
     end
   end
 

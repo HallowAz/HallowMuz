@@ -4,3 +4,7 @@
   <%=form.text_field :name%>
   <%=form.submit('Создать')%>
 <%end%>
+<br>
+<%=form_with url: adding_playlist_path, method: :get do |form|%>
+<%=link_to "Назад", library_path%>
+<%end%>

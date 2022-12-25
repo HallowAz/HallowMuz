@@ -19,4 +19,8 @@ Rails.application.routes.draw do
   get '/creating_playlist', to: 'home#creating_playlist'
   post '/creating_playlist_after', to: 'home#creating_playlist_after'
   post '/users/edit_form'
+  get 'adding_playlist', to: 'home#adding_playlist'
+  post 'after_adding_playlist', to: 'home#after_adding_playlist'
+  get 'edit_playlist', to: 'home#edit_playlist'
+  post 'deleting_playlist', to: 'home#deleting_playlist'
 end

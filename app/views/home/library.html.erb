@@ -20,6 +20,14 @@
     </div>
     <div class="playlists">
         <h3>Плейлисты</h3>
+        <%@user.playlists.each do |playlist|%>
+        <%=form_with url: edit_playlist_path, method: :get do |form|%>
+            <%=form.hidden_field :name, value: playlist[:name]%>
+            <%=form.hidden_field :playlist_id, value: playlist[:id]%>
+            <%=form.submit(playlist[:name], :class => "btn btn-outline-dark")%>
+            <%end%>
+        <%end%>
+        <br>
         <%=link_to 'Создать плейлист', creating_playlist_path%>
     </div>
 </div>
