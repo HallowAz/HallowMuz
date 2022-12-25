@@ -1,7 +1,7 @@
 <%#<%= render json: Song.find_by(id:1)%>
+<h3>Библиотека</h3>
 <div class="lib">
-    <div class="all_my_songs">
-    <h3>Библиотека</h3>
+    <div class="all_my_songs" id = "all_my_songs">
         <%count = 0%>
         <% @music.reverse.each do |song|%>
             <div class="song" id ="song_number_<%=count%>">
