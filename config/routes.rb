@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   post 'after_adding_playlist', to: 'home#after_adding_playlist'
   get 'edit_playlist', to: 'home#edit_playlist'
   post 'deleting_playlist', to: 'home#deleting_playlist'
+  post 'extra_new_songs', to: 'home#extra_new_songs'
 end

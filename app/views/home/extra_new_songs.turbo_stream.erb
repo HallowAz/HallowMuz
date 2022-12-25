@@ -1,0 +1,5 @@
+<%if params[:check] == 'songs'%>
+    <%= turbo_stream.update 'home_new_songs', partial: 'extra_songs' %>
+<%else%>
+    <%= turbo_stream.update 'singers', partial: 'extra_singers'%>
+<%end%>

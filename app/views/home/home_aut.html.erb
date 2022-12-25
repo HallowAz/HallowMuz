@@ -1,5 +1,5 @@
 <div class="body_home">
-    <div class="home_new_songs">
+    <div class="home_new_songs" id = "home_new_songs">
         <h3>Новинки</h3>
         <%count = 0%>
         <%Song.all.reverse.each do |song|%>
@@ -19,9 +19,14 @@
             <%count+=1%>
             <%break if count == 10%>
         <%end%>
+        <br>
+        <%=form_with url: extra_new_songs_path do |form|%>
+        <%=form.hidden_field :check, value: "songs" %>
+        <%=form.submit("Ещё", :class=>"btn btn-link")%>
+        <%end%>
     </div>
 
-    <div class="singers">
+    <div class="singers" id = "singers">
     <h3>Исполнители</h3>
         <%count = 0%>
         <%Singer.all.each do |singer|%>
@@ -36,6 +41,11 @@
             </div>
             <%count+=1%>
             <%break if count == 5%>
+        <%end%>
+        <br>
+        <%=form_with url: extra_new_songs_path do |form|%>
+        <%=form.hidden_field :check, value: "singers" %>
+        <%=form.submit("Ещё", :class=>"btn btn-link")%>
         <%end%>
     </div>
 </div>

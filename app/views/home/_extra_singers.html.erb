@@ -1,0 +1,14 @@
+<h3>Исполнители</h3>
+        <%count = 0%>
+        <%Singer.all.each do |singer|%>
+            <div class="singer">
+                <%=form_with url: singers_profile_path, method: :get do |form|%>
+                    <div class = "SingerIcon"><img src="/singer_avatars/<%=singer[:name].gsub(' ', '_')%>.png" height="80px">
+                    </div>
+                    <%=form.hidden_field :name, value: singer[:name]%>
+                    <%=form.submit(singer[:name], :class => 'btn btn-outline-warning')%>
+                <%end%>
+                <br><br><br>
+            </div>
+            <%count+=1%>
+        <%end%>
