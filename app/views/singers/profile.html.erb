@@ -1,33 +1,33 @@
 <div class="profile_singer">
-<div class = "SingerIcon">
-<%if File.exist?("/home/amigo/Study/Yaip/player/public/singer_avatars/#{@singer[:name].gsub(' ', '_')}.png")%>
-    <img src="/singer_avatars/<%=@singer[:name].gsub(' ', '_')%>.png" height="80px">
-<%else%>
-    <img src="/singer_avatars/base_singer.png" height="80px">
-<%end%>
-</div>
-<h2><%=@singer[:name]%></h2>
-    <h3>Песни</h3>
-    <div class="profole_song">
-        <%count = 0%>
-        <%@singer.songs.reverse.each do |song|%>
-            <div class="song" id ="song_number_<%=count%>">
-                <p><%=song[:name]%></p>
-                <audio 
-                controls
-                src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="onplayer(<%=count%>)">
-                    Your browser does not support the 
-                    <code>audio</code> element.
-                </audio>
-                <%=form_with url: adding_path do |form|%>
-                <%=form.hidden_field :song_id, value: song[:id] %>
-                <%=form.submit('Добавить', :class => 'btn btn-outline-success')%>
-                <%end%>
-            </div>
-            <%count+=1%>
-            <%break if count == 10%>
+    <div class = "SingerIcon">
+        <%if File.exist?("/home/amigo/Study/Yaip/player/public/singer_avatars/#{@singer[:name].gsub(' ', '_')}.png")%>
+            <img src="/singer_avatars/<%=@singer[:name].gsub(' ', '_')%>.png" height="80px">
+        <%else%>
+            <img src="/singer_avatars/base_singer.png" height="80px">
         <%end%>
     </div>
+    <h2><%=@singer[:name]%></h2>
+        <h3>Песни</h3>
+        <div class="profole_song">
+            <%count = 0%>
+            <%@singer.songs.reverse.each do |song|%>
+                <div class="song" id ="song_number_<%=count%>">
+                    <p><%=song[:name]%></p>
+                    <audio 
+                    controls
+                    src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="onplayer(<%=count%>)">
+                        Your browser does not support the 
+                        <code>audio</code> element.
+                    </audio>
+                    <%=form_with url: adding_path do |form|%>
+                    <%=form.hidden_field :song_id, value: song[:id] %>
+                    <%=form.submit('Добавить', :class => 'btn btn-outline-dark')%>
+                    <%end%>
+                </div>
+                <%count+=1%>
+                <%break if count == 10%>
+            <%end%>
+        </div>
+        <%=link_to 'Назад', home_aut_path, :class => 'create_playlist'%>
 </div>
 
-<%=link_to 'Назад', home_aut_path%>

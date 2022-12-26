@@ -1,9 +1,11 @@
-<h1>Регистрация</h1>
+<div class = "registration">
+<h1 class = "registration_font">Регистрация</h1>
 <%=flash[:notice]%>
 <%= render "form", user: @user %>
 
 <br>
 
 <div>
-  <%= link_to 'Назад', autorization_path %>
+  <%= link_to 'Назад', autorization_path, :class => "back_profile" %>
+</div>
 </div>

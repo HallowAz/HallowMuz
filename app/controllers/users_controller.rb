@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     else
       new_user_params = user_params.permit(:login, :password, :firstname, :avatar)
     end
-    if new_user_params[:password].nil? || new_user_params[:password].length > 6   
+    if new_user_params[:password].nil? || new_user_params[:password].length >= 6   
       if new_user_params[:avatar].nil? || new_user_params[:avatar].original_filename.match('.png') != nil
       new_user_params[:avatar] = new_user_params[:avatar].original_filename.delete('.png') unless new_user_params[:avatar].nil?
         respond_to do |format|

@@ -1,4 +1,4 @@
-<h1>Профиль</h1>
+<h1 class = "profile">Профиль</h1>
 <div class="profile">
 <div class="profile_avatar"><img src="/avatars/<%=@user[:avatar]%>.png" height="80%" alt="Ава"></div>
 <h2><%=@user[:firstname]%></h2>
@@ -6,7 +6,7 @@
 </div>
 <br>
 <%=flash[:notice]%>
-<div>
-  <%= link_to "Редактировать данные", edit_user_path(@user) %> |
-  <%= link_to "Назад", home_aut_path %>
+<div class = "redactori">
+  <%= link_to "Редактировать данные", edit_user_path(@user), :class => "back_profile" %> |
+  <%= link_to "Назад", home_aut_path, :class => "back_profile" %>
 </div>

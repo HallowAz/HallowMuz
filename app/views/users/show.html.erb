@@ -1,10 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<div class = "edit_user">
+  <p style="color: white"><%= notice %></p>
 
-<%= render @user %>
+  <%= render @user %>
 
-<div>
-  <%= link_to "Редактировать данные", edit_user_path(@user) %> |
-  <%= link_to "Назад", home_aut_path %>
-  <br>
-  <%= button_to "Удалить страницу", @user, method: :delete, :class => "btn btn-outline-danger" %>
+  <div>
+    <%= link_to "Редактировать данные", edit_user_path(@user), :class => "edit_link" %> |
+    <%= link_to "Назад", home_aut_path, :class => "edit_link" %>
+    <br>
+    <br>
+    <%= button_to "Удалить страницу", @user, method: :delete, :class => "btn btn-outline-danger" %>
+  </div>
 </div>

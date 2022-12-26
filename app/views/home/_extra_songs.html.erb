@@ -1,4 +1,4 @@
-<h3>Новинки</h3>
+<h3 class = "song_category">Новинки</h3>
         <%count = 0%>
         <%Song.all.reverse.each do |song|%>
             <div class="song" id ="song_number_<%=count%>">
@@ -11,7 +11,7 @@
                 </audio>
                 <%=form_with url: adding_path do |form|%>
                 <%=form.hidden_field :song_id, value: song[:id] %>
-                <%=form.submit('Добавить', :class => 'btn btn-outline-success')%>
+                <%=form.submit('Добавить', :class => 'btn btn-outline-dark')%>
                 <%end%>
             </div>
             <%count+=1%>

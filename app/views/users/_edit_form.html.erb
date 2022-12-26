@@ -1,5 +1,7 @@
+<div class = "change_profile">
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
+  
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -9,7 +11,9 @@
         <% end %>
       </ul>
     </div>
+    
   <% end %>
+  
   <div class="profile_avatar">
     <img src="/avatars/<%=user.avatar%>.png" height="80%" alt="Ава">
   </div>
@@ -27,10 +31,11 @@
   <br>
   <div>
     <%= form.label 'Пароль', style: "display: block" %>
-    <%= form.password_field :password %>
+    <%= form.password_field :password , :class => 'password'%>
   </div>
   <br>
   <div>
-    <%= form.submit('Изменить') %>
+    <%= form.submit('Изменить', :class => "btn btn-outline-dark") %>
+  </div>
   </div>
 <% end %>

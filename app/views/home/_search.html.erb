@@ -1,23 +1,23 @@
-<%unless @search_muz.empty?%>
-    <h3>Результаты поиска</h3>
-    <div class="search_res">
-        <%count = 0%>
-        <% @search_muz.each do |song|%>
-            <div class="song" id ="song_number_<%=count%>">
-                <p><%=song[:name]%></p>
-                <audio controls src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="onplayer(<%=count%>)">
-                </audio>
-                <%=form_with url: adding_path do |form|%>
-                <%=form.hidden_field :song_id, value: song[:id] %>
-                <%=form.submit('Добавить', :class => 'btn btn-outline-success')%>
+<div class="search_res">
+    <div class="search_res_main">
+        <%unless @search_muz.empty?%>
+                <h3 class = "search_category">Результаты поиска</h3>
+                <%count = 0%>
+                <% @search_muz.each do |song|%>
+                    <div class="song" id ="song_number_<%=count%>">
+                        <p><%=song[:name]%></p>
+                        <audio controls src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="number_<%=count%>" onplay="onplayer(<%=count%>)">
+                        </audio>
+                        <%=form_with url: adding_path do |form|%>
+                        <%=form.hidden_field :song_id, value: song[:id] %>
+                        <%=form.submit('Добавить', :class => 'btn btn-outline-dark')%>
+                        <%end%>
+                    </div> 
+                    <%count+=1%>
                 <%end%>
-            </div> 
-            <%count+=1%>
+        <%else%>
+            <h3>Поиск не дал результатов по данному запросу</h3>
         <%end%>
     </div>
-<%else%>
-    <h3>Поиск не дал результатов по данному запросу</h3>
-<%end%>
-<br>
-<br>
-<%= link_to "Назад", home_aut_path %>
+    <%= link_to "Назад", home_aut_path, :class => "back" %>
+</div>

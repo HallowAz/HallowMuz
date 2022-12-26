@@ -1,7 +1,6 @@
-<%#<%= render json: Song.find_by(id:1)%>
-<h3>Библиотека</h3>
 <div class="lib">
     <div class="all_my_songs" id = "all_my_songs">
+    <h3 class = "lib_category">Библиотека</h3>
         <%count = 0%>
         <% @music.reverse.each do |song|%>
             <div class="song" id ="song_number_<%=count%>">
@@ -19,18 +18,18 @@
         <br><br>
     </div>
     <div class="playlists">
-        <h3>Плейлисты</h3>
+        <h3 class = "playlists_category">Плейлисты</h3>
         <%@user.playlists.each do |playlist|%>
         <%=form_with url: edit_playlist_path, method: :get do |form|%>
             <%=form.hidden_field :name, value: playlist[:name]%>
             <%=form.hidden_field :playlist_id, value: playlist[:id]%>
-            <%=form.submit(playlist[:name], :class => "btn btn-outline-dark")%>
+            <%=form.submit(playlist[:name], :class => "btn btn-outline-dark btn_playlist")%>
             <%end%>
         <%end%>
         <br>
-        <%=link_to 'Создать плейлист', creating_playlist_path%>
+        <%=link_to 'Создать плейлист', creating_playlist_path, :class => "create_playlist"%>
     </div>
+    <%=link_to 'Загрузить песню', load_path, :class => "download_song"%>
+    <%=link_to 'Назад', home_aut_path, :class => "back"%>
 </div>
-<br>
-<%=link_to 'Загрузить песню', load_path%><br><br>
-<%=link_to 'Назад', home_aut_path%>
+

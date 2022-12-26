@@ -1,8 +1,8 @@
-<h3><%=params[:name]%></h3>
+<h3 class = "name_playlist"><%=params[:name]%></h3>
 <%=form_with url: adding_playlist_path, method: :get do |form|%>
   <%=form.hidden_field :playlist_id, value: params[:playlist_id]%>
   <%=form.hidden_field :name, value: params[:name]%>
-  <%=form.submit('Добавить песен', :class => 'btn btn-outline-success')%>
+  <%=form.submit('Добавить песен', :class => 'btn btn-outline-dark btn-add')%>
 <%end%>
 
 <%=form_with url: deleting_playlist_path do |form|%>
@@ -28,5 +28,5 @@
 <%end%>
 <br>
 <%=form_with url: adding_playlist_path, method: :get do |form|%>
-<%=link_to "Назад", library_path, data: {'turbo-method' => :post}%>
+<%=link_to "Назад", library_path, :class => "back_playlist_edit", data: {'turbo-method' => :post}%>
 <%end%>

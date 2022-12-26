@@ -1,6 +1,6 @@
 <div class="body_home">
     <div class="home_new_songs">
-        <h3>Новинки</h3>
+        <h3 class = "song_category">Новинки</h3>
         <%count = 0%>
         <%Song.all.reverse.each do |song|%>
             <div class="song" id ="song_number_<%=count%>">
@@ -14,7 +14,7 @@
                 <%=form_with url: after_adding_playlist_path do |form|%>
                 <%=form.hidden_field :song_id, value: song[:id] %>
                 <%=form.hidden_field :playlist_id, value: params[:playlist_id] %>
-                <%=form.submit('Добавить', :class => 'btn btn-outline-success')%>
+                <%=form.submit('Добавить', :class => 'btn btn-outline-dark')%>
                 <%end%>
             </div>
             <%count+=1%>
@@ -24,6 +24,6 @@
 <%=form_with url: edit_playlist_path, method: :get do |form|%>
 <%=form.hidden_field :playlist_id, value: params[:playlist_id]%>
 <%=form.hidden_field :name, value: params[:name]%>
-<%=form.submit("Назад", :class => 'btn btn-outline-warning')%>
+<%=form.submit("Назад", :class => 'btn btn-outline-warning btn-add-back')%>
 <%end%>
 </div>

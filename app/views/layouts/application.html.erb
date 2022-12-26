@@ -74,7 +74,7 @@
       <div class="player">
           <%song = Song.last%>
               <div class="song" id="current_audio_div">
-                  <p id="current_song_name"><%=song[:name]%></p>
+                  <p id="current_song_name" class="player_name"><%=song[:name]%></p>
                   <audio 
                   controls
                   src="/music/<%=song[:name].gsub(' ', '_')%>.mp3" id="current_audio">
@@ -108,9 +108,10 @@
         new_song.children[0].id="current_song_name"
         new_song.children[1].id="current_audio"
         div_song.appendChild(new_song.children[0])
+        div_song.children[0].className = "player_name"
         div_song.appendChild(new_song.children[0])
+        console.log(div_song.children[0])
         div_song.children[1].onplay = false
-        console.log(div_song.children[1])
         }
 
       function onplayer(index) {

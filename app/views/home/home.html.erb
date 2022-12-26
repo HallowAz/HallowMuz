@@ -1,6 +1,6 @@
 <div class="body_home">
     <div class="home_new_songs" id="home_new_songs">
-        <h3>Новинки</h3>
+        <h3 class = "song_category">Новинки</h3>
         <%count = 0%>
         <%Song.all.reverse.each do |song|%>
             <div class="song" id ="song_number_<%=count%>">
@@ -13,36 +13,36 @@
                 </audio>
                 <%=form_with url: adding_path do |form|%>
                 <%=form.hidden_field :song_id, value: song[:id] %>
-                <%=form.submit('Добавить', :class => 'btn btn-outline-success')%>
+                <%=form.submit('Добавить', :class => 'btn btn-outline-dark')%>
                 <%end%>
             </div>
             <%count+=1%>
             <%break if count == 10%>
         <%end%>
-        <br>
         <%=form_with url: extra_new_songs_path do |form|%>
         <%=form.hidden_field :check, value: "songs" %>
-        <%=form.submit("Ещё", :class=>"btn btn-link")%>
+        <%=form.submit("Ещё...", :class=>"btn btn-link more_button")%>
         <%end%>
     </div>
 
     <div class="singers" id="singers">
-    <h3>Исполнители</h3>
+    <h3 class = "singer_category">Исполнители</h3>
         <%count = 0%>
         <%Singer.all.each do |singer|%>
             <div class="singer">
                 <%=form_with url: singers_profile_path, method: :get do |form|%>
-                    <%=form.hidden_field :name, value: singer[:name]%>
-                    <div class = "SingerIcon">
-                    <%if File.exist?("/home/amigo/Study/Yaip/player/public/singer_avatars/#{singer[:name].gsub(' ', '_')}.png")%>
-                        <%=form.submit :type => :image, :src => "/singer_avatars/#{singer[:name].gsub(' ', '_')}.png", :class => "SingerIcon"%>
-                    <%else%>
-                        <%=form.submit :type => :image, :src => "/singer_avatars/base_singer.png", :class => "SingerIcon"%>
-                    <%end%>
+                    <div class = "form_singer">
+                        <%=form.hidden_field :name, value: singer[:name]%>
+                        <div class = "SingerIcon">
+                        <%if File.exist?("/home/amigo/Study/Yaip/player/public/singer_avatars/#{singer[:name].gsub(' ', '_')}.png")%>
+                            <%=form.submit :type => :image, :src => "/singer_avatars/#{singer[:name].gsub(' ', '_')}.png", :class => "SingerIcon"%>
+                        <%else%>
+                            <%=form.submit :type => :image, :src => "/singer_avatars/base_singer.png", :class => "SingerIcon"%>
+                        <%end%>
+                        </div>
+                        <%=form.submit(singer[:name], :class => 'btn btn-outline-warning')%>
                     </div>
-                    <%=form.submit(singer[:name], :class => 'btn btn-outline-warning')%>
                 <%end%>
-                <br><br><br>
             </div>
             <%count+=1%>
             <%break if count == 5%>
@@ -50,7 +50,7 @@
         <br>
         <%=form_with url: extra_new_songs_path do |form|%>
         <%=form.hidden_field :check, value: "singers" %>
-        <%=form.submit("Ещё", :class=>"btn btn-link")%>
+        <%=form.submit("Ещё...", :class=>"btn btn-link more_button")%>
         <%end%>
     </div>
 </div>

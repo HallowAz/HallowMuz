@@ -1,4 +1,4 @@
-<h1>Редактирование профиля</h1>
+<h1 class = "redactor_profila">Редактирование профиля</h1>
  
 <%= render "edit_form", user: @user %>
 <br>
@@ -7,5 +7,7 @@
   <%=flash[:notice]%>
   <br>
   <%= button_to "Удалить страницу", @user, method: :delete, :class => "btn btn-outline-danger" %>
-  <%= link_to "Назад", profile_path, data: {'turbo-method' => :post} %>
+  <br>
+  <br>
+  <%= link_to "Назад", profile_path, data: {'turbo-method' => :post}, :class => "btn-back-redactor" %>
 </div>
