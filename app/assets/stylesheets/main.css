@@ -1,8 +1,10 @@
-a{
-  color: blueviolet;
+.header a{
+  color: aqua;
   text-decoration: none;
 }
-
+a{
+  color:blue;
+}
 .header{
   display: flex;
   justify-content: space-between;
@@ -24,10 +26,14 @@ a{
   margin-left: 5px;
 }
 
-.header_item:hover{
-  background-color: darkred;
-  border-radius: 5px;
+.header_item label{
+  color: aqua;
+  margin-top: 8px;
 }
+
+/* .header_item a:hover{
+  background:green;
+} */
 
 .headerlogo{
   font-weight: bold;
@@ -43,6 +49,7 @@ a{
 
 .body_home{
   display: flex;
+  justify-content: space-around;
 }
 
 .profile_avatar {
@@ -95,3 +102,4 @@ a{
 .headerProfileIcon img {
   height: 80px;
 }
+

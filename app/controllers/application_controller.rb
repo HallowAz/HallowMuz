@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate, only: [:profile, :library, :adding] 
+  before_action :authenticate, only: [:profile, :library, :adding, :load, :creating_playlist, :edit_playlist, :edit, :users] 
   before_action :set_user, only: [:profile, :library, :adding, :home_aut]
   before_action :player_on, except: [:autorization, :new]
   

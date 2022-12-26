@@ -31,11 +31,9 @@ class UsersController < ApplicationController
         respond_to do |format|
           if @user.save
             session[:current_user_id] = @user.id
-            format.html { redirect_to profile_path, notice: "Регистрация завершена успешно" }
-            format.json { render :show, status: :created, location: @user }
+            format.html { redirect_to home_aut_path }
           else
             format.html { render :new, status: :unprocessable_entity }
-            format.json { render json: @user.errors, status: :unprocessable_entity }
             player_of
           end
         end
@@ -89,7 +87,12 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      if session[:current_user_id] == params[:id].to_i
+        @user = User.find(params[:id])
+      else
+        @user = User.find(session[:current_user_id])
+        redirect_to home_aut_path
+      end
     end
 
     # Only allow a list of trusted parameters through.

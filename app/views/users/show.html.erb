@@ -5,6 +5,6 @@
 <div>
   <%= link_to "Редактировать данные", edit_user_path(@user) %> |
   <%= link_to "Назад", home_aut_path %>
-
-  <%= button_to "Удалить страницу", @user, method: :delete %>
+  <br>
+  <%= button_to "Удалить страницу", @user, method: :delete, :class => "btn btn-outline-danger" %>
 </div>

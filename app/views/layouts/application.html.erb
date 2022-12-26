@@ -23,7 +23,7 @@
             </div>
             <div class = "header_item">
             <%=form_with url: search_path do |form|%>
-                <%=form.label('Поиск')%>
+                <%=form.label('Поиск', :class => "lab")%>
                 <%=form.text_field(:str)%>
                 <%=form.submit 'Найти', :class => "btn btn-primary" %>
             <%end%>
@@ -50,7 +50,7 @@
             <%=form_with url: search_path do |form|%>
                 <%=form.label('Поиск')%>
                 <%=form.text_field(:str)%>
-                <%=form.submit('Найти')%>
+                <%=form.submit('Найти', :class => "btn btn-outline-info")%>
             <%end%>
             </div>        
         </div>
@@ -95,8 +95,12 @@
         song.play()
       }
 
+      function next_song(index){
+        
+        document.getElementById("song_number_" + index).children[1].play()
+      }
+      
       function put_in_player(index) {
-
         div_song = document.getElementById("current_audio_div")
         new_song = document.getElementById("song_number_" + String(index)).cloneNode(true)
         div_song.removeChild(div_song.children["current_song_name"])
@@ -106,12 +110,15 @@
         div_song.appendChild(new_song.children[0])
         div_song.appendChild(new_song.children[0])
         div_song.children[1].onplay = false
+        console.log(div_song.children[1])
         }
 
       function onplayer(index) {
         put_in_player(index)
         stop_playing(index)
+
       }
+
     </script>
   </body>
 </html>

@@ -28,5 +28,5 @@
 <%end%>
 <br>
 <%=form_with url: adding_playlist_path, method: :get do |form|%>
-<%=link_to "Назад", library_path%>
+<%=link_to "Назад", library_path, data: {'turbo-method' => :post}%>
 <%end%>
