@@ -21,7 +21,7 @@ class HomeController < ApplicationController
   end
 
   def search
-    unless params[:str].length == 0 || params[:str].nil?
+    unless params[:str].nil? || params[:str].length == 0 
       @search_muz = HomeHelper.search_muz(params[:str].downcase)
     else
       redirect_to home_aut_path
@@ -50,8 +50,8 @@ class HomeController < ApplicationController
 
   def after_load
     song = params[:song]
-    unless song.original_filename.match('.mp3\z').nil?
-      unless song.nil? || params[:singer] == ""
+    unless song.nil? || params[:singer] == ""
+      unless song.original_filename.match('.mp3\z').nil?
         HomeHelper.save_file(song)
         new_song = Song.new(name: params[:song].original_filename.delete(".mp3"))
         singers = params[:singer].gsub(' ft. ', ', ').split(', ')
@@ -67,10 +67,10 @@ class HomeController < ApplicationController
         new_song.save
         redirect_to load_path, notice: 'Загрузка выполнена успешно'
       else
-        redirect_to load_path, notice: 'Вы не заполнили все условия'
+        redirect_to load_path, notice: 'Формат должен быть mp3'
       end
     else
-        redirect_to load_path, notice: 'Формат должен быть mp3'
+        redirect_to load_path, notice: 'Вы не заполнили все условия'
     end
   end
 

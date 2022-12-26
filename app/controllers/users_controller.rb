@@ -49,29 +49,33 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    if params[:password] == "" || params[:password].nil?
+    if user_params[:password] == "" || user_params[:password].nil?
       new_user_params = user_params.permit(:login, :firstname, :avatar)
     else
       new_user_params = user_params.permit(:login, :password, :firstname, :avatar)
     end
-    if new_user_params[:avatar].nil? || new_user_params[:avatar].original_filename.match('.png') != nil
-    new_user_params[:avatar] = new_user_params[:avatar].original_filename.delete('.png') unless new_user_params[:avatar].nil?
-      respond_to do |format|
-        if @user.update(new_user_params)
-          unless new_user_params[:avatar].nil?
-            File.open(Rails.root.join('public', 'avatars', user_params[:avatar].original_filename.gsub(' ', '_')), 'wb') do |file|
-              file.write(user_params[:avatar].read)
+    if new_user_params[:password].nil? || new_user_params[:password].length > 6   
+      if new_user_params[:avatar].nil? || new_user_params[:avatar].original_filename.match('.png') != nil
+      new_user_params[:avatar] = new_user_params[:avatar].original_filename.delete('.png') unless new_user_params[:avatar].nil?
+        respond_to do |format|
+          if @user.update(new_user_params)
+            unless new_user_params[:avatar].nil?
+              File.open(Rails.root.join('public', 'avatars', user_params[:avatar].original_filename.gsub(' ', '_')), 'wb') do |file|
+                file.write(user_params[:avatar].read)
+              end
             end
+            format.html { redirect_to user_url(@user), notice: "Данные были успешно изменены" }
+            format.json { render :show, status: :ok, location: @user }
+          else
+            format.html { render :edit, status: :unprocessable_entity }
+            format.json { render json: @user.errors, status: :unprocessable_entity }
           end
-          format.html { redirect_to user_url(@user), notice: "Данные были успешно изменены" }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
         end
+      else
+        redirect_to edit_user_path(@user), notice: 'Формат должен быть png'
       end
     else
-      redirect_to edit_user_path(@user), notice: 'Формат должен быть png'
+      redirect_to edit_user_path(@user), notice: 'Пароль не может быть короче 6 символов'
     end
   end
 

@@ -80,8 +80,18 @@ a{
   padding-bottom: 100px;
 }
 
+.SingerIcon{
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+}
 .SingerIcon img{
   height: 150px;
   width: 150px;
   border-radius: 100px;
+}
+
+
+.headerProfileIcon img {
+  height: 80px;
 }

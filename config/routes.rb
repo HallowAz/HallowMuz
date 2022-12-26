@@ -24,4 +24,8 @@ Rails.application.routes.draw do
   get 'edit_playlist', to: 'home#edit_playlist'
   post 'deleting_playlist', to: 'home#deleting_playlist'
   post 'extra_new_songs', to: 'home#extra_new_songs'
+  post 'search', to: 'home#search'
+  post 'home_aut', to: 'home#home_aut'
+  post 'library', to: 'home#library'
+  post '/profile', to: 'home#profile'
 end

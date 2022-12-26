@@ -8,4 +8,4 @@
 <%end%>
 <br>
 <%=flash[:notice]%><br><br>
-<%=link_to "Назад", library_path%>
+<%=link_to "Назад", library_path, data: {'turbo-method' => :post}%>

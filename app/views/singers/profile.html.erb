@@ -1,5 +1,10 @@
 <div class="profile_singer">
-<div class = "SingerIcon"><img src="/singer_avatars/<%=@singer[:name].gsub(' ', '_')%>.png" height="80px">
+<div class = "SingerIcon">
+<%if File.exist?("/home/amigo/Study/Yaip/player/public/singer_avatars/#{@singer[:name].gsub(' ', '_')}.png")%>
+    <img src="/singer_avatars/<%=@singer[:name].gsub(' ', '_')%>.png" height="80px">
+<%else%>
+    <img src="/singer_avatars/base_singer.png" height="80px">
+<%end%>
 </div>
 <h2><%=@singer[:name]%></h2>
     <h3>Песни</h3>

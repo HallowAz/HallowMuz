@@ -3,9 +3,14 @@
         <%Singer.all.each do |singer|%>
             <div class="singer">
                 <%=form_with url: singers_profile_path, method: :get do |form|%>
-                    <div class = "SingerIcon"><img src="/singer_avatars/<%=singer[:name].gsub(' ', '_')%>.png" height="80px">
-                    </div>
                     <%=form.hidden_field :name, value: singer[:name]%>
+                    <div class = "SingerIcon">
+                     <%if File.exist?("/home/amigo/Study/Yaip/player/public/singer_avatars/#{singer[:name].gsub(' ', '_')}.png")%>
+                        <%=form.submit :type => :image, :src => "/singer_avatars/#{singer[:name].gsub(' ', '_')}.png", :class => "SingerIcon"%>
+                    <%else%>
+                        <%=form.submit :type => :image, :src => "/singer_avatars/base_singer.png", :class => "SingerIcon"%>
+                    <%end%>
+                    </div>
                     <%=form.submit(singer[:name], :class => 'btn btn-outline-warning')%>
                 <%end%>
                 <br><br><br>
