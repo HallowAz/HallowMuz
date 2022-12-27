@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/search', to: 'home#search'
   get '/home_aut', to: 'home#home_aut'
   post '/checking', to: 'session#checking'
-  post '/log_out', to: 'home#log_out'
+  post '/log_out', to: 'session#log_out'
   post '/adding', to: 'home#adding'
   post '/deleting', to: 'home#deleting'
   get '/load', to: 'home#load'

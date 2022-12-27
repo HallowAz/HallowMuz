@@ -65,3 +65,8 @@ group :development do
 end
 
 gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
+
+gem 'faker'
+
+gem 'capybara'
+gem 'webdrivers'

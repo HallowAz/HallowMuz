@@ -339,3 +339,18 @@ p {
   align-items: center;
   margin-bottom: 20px;
 }
+
+.back_playlist{
+  color:white;
+  height: 0;
+  text-decoration: none;
+}
+
+.back_playlist:hover{
+  color:darkblue;
+}
+
+.search_btn{
+  background-color: aqua;
+  color: black;
+}

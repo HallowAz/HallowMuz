@@ -58,7 +58,11 @@ class HomeController < ApplicationController
         singers.each do |singer|
           check_singer = Singer.find_by_name(singer)
           if check_singer.nil?
-            new_singer = Singer.create!(name:singer)
+            new_singer = Singer.new(name:singer)
+            if new_singer.valid? == false
+              redirect_to load_path, notice: "Такое имя исполнителя недопустимо"
+              return
+            end
             new_singer.songs << new_song
           else
             check_singer.songs << new_song
@@ -96,7 +100,7 @@ class HomeController < ApplicationController
   end
 
   def deleting_playlist
-    Playlist.find_by_id(params[:playlist_id]).delete
+    Playlist.find_by_id(params[:playlist_id]).destroy
     redirect_to library_path
   end
   private

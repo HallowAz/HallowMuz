@@ -26,12 +26,12 @@
   <br>
   <div>
     <%= form.label 'Электронная почта', style: "display: block" %>
-    <%= form.email_field :login %>
+    <%= form.email_field :login, :id => "email_f" %>
   </div>
   <br>
   <div>
     <%= form.label 'Пароль', style: "display: block" %>
-    <%= form.password_field :password , :class => 'password'%>
+    <%= form.password_field :password , :class => 'password', :id => 'password_f'%>
   </div>
   <br>
   <div>

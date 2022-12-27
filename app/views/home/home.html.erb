@@ -13,7 +13,7 @@
                 </audio>
                 <%=form_with url: adding_path do |form|%>
                 <%=form.hidden_field :song_id, value: song[:id] %>
-                <%=form.submit('Добавить', :class => 'btn btn-outline-dark')%>
+                <%=form.submit('Добавить', :class => 'btn btn-outline-dark', :id => "add_btn_#{count}")%>
                 <%end%>
             </div>
             <%count+=1%>

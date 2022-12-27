@@ -17,22 +17,22 @@
             <div class = "header_item headerlogo">
                 HallowMuz
             </div>
-            <div class = "header_item headerButton"><%= link_to 'Главная', home_aut_path%>
+            <div class = "header_item headerButton"><%= link_to 'Главная', home_aut_path, :id => "Main"%>
             </div>
-            <div class = "header_item headerButton"><%= link_to 'Моя музыка', library_path, data: {'turbo-method' => :post}%>
+            <div class = "header_item headerButton"><%= link_to 'Моя музыка', library_path, data: {'turbo-method' => :post}, :id => "My_music"%>
             </div>
             <div class = "header_item">
             <%=form_with url: search_path do |form|%>
                 <%=form.label('Поиск', :class => "lab")%>
-                <%=form.text_field(:str)%>
-                <%=form.submit 'Найти', :class => "btn btn-primary" %>
+                <%=form.text_field(:str, :id => "search_field")%>
+                <%=form.submit 'Найти', :class => "btn btn-primary search_btn", :id => "Search_btn" %>
             <%end%>
             </div>
         </div>
         <div class="header_section">
-            <div class = "header_item headerProfileIcon"><%=link_to image_tag("/avatars/#{@user[:avatar]}.png"), profile_path, data: {'turbo-method' => :post} %> 
+            <div class = "header_item headerProfileIcon"><%=link_to image_tag("/avatars/#{@user[:avatar]}.png"), profile_path, data: {'turbo-method' => :post}, :id => "profile_icon" %> 
             </div>
-            <div class = "header_item headerButton"><%= link_to 'Выйти', session_log_out_path%>
+            <div class = "header_item headerButton"><%= link_to 'Выйти', session_log_out_path, :id => "log_out"%>
             </div>
         </div>
       </div>
@@ -73,6 +73,7 @@
     <%if @player_on%>
       <div class="player">
           <%song = Song.last%>
+            <%unless song.nil?%>
               <div class="song" id="current_audio_div">
                   <p id="current_song_name" class="player_name"><%=song[:name]%></p>
                   <audio 
@@ -82,6 +83,7 @@
                       <code>audio</code> element.
                   </audio>
               </div>
+            <%end%>
       </div>
     <%end%>
     <script>

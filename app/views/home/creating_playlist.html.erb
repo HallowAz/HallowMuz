@@ -4,7 +4,7 @@
   <div class = "creating_playlist_form_url">
     <%=form_with url: creating_playlist_after_path do |form|%>
     <%=form.label('Название') %>
-    <%=form.text_field :name%>
+    <%=form.text_field :name, :id => "creating_playlist_field"%>
     <%=form.submit('Создать', :class => "btn btn-outline-dark")%>
   <%end%>
   </div>

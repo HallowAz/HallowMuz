@@ -33,7 +33,7 @@ class UsersController < ApplicationController
             session[:current_user_id] = @user.id
             format.html { redirect_to home_aut_path }
           else
-            format.html { render :new, status: :unprocessable_entity }
+            format.html { redirect_to new_user_path, notice: "Такая почта уже зарегестрирована" }
             player_of
           end
         end
@@ -63,10 +63,8 @@ class UsersController < ApplicationController
               end
             end
             format.html { redirect_to user_url(@user), notice: "Данные были успешно изменены" }
-            format.json { render :show, status: :ok, location: @user }
           else
-            format.html { render :edit, status: :unprocessable_entity }
-            format.json { render json: @user.errors, status: :unprocessable_entity }
+            format.html { redirect_to edit_user_path(@user), notice: "Такая почта уже зарегестрирована" }
           end
         end
       else

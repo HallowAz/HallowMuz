@@ -4,9 +4,9 @@
 
     <%= form_with url: checking_path do |form|%>
     <%= form.label('Логин')%><br>
-    <%= form.text_field(:login)%> <br> <br>
+    <%= form.text_field(:login, :id => "login")%> <br> <br>
     <%= form.label('Пароль')%><br>
-    <%= form.password_field(:password)%><br><br>
+    <%= form.password_field(:password, :id => "password")%><br><br>
     <%= form.submit("Войти", :class => "btn btn-info", id: 'aut_button')%>
     <%end%>
     <br>
