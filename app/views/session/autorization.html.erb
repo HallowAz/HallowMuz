@@ -1,16 +1,16 @@
 <div class = "autorization">
-    <h3 class = "autorization_font">Авторизация</h3>
+    <h3 class = "autorization_font"><%= t('.label')%></h3>
     <%= flash[:notice]%>
 
     <%= form_with url: checking_path do |form|%>
-    <%= form.label('Логин')%><br>
+    <%= form.label(t('.label_login'))%><br>
     <%= form.text_field(:login, :id => "login")%> <br> <br>
-    <%= form.label('Пароль')%><br>
+    <%= form.label(t('.label_password'))%><br>
     <%= form.password_field(:password, :id => "password")%><br><br>
-    <%= form.submit("Войти", :class => "btn btn-info", id: 'aut_button')%>
+    <%= form.submit(t('.label_submit'), :class => "btn btn-info", id: 'aut_button')%>
     <%end%>
     <br>
-    <%=link_to 'Зарегестрироваться', new_user_path, id: 'sign_up_link' , :class => "back_profile"%>
+    <%=link_to t('.link_sign_up'), new_user_path, id: 'sign_up_link' , :class => "back_profile"%>
     <br><br>
-    <%=link_to 'Назад' ,root_path, :class => "back_profile"%>
+    <%=link_to t('.link_back'), root_path, :class => "back_profile"%>
 </div>

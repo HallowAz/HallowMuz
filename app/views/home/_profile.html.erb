@@ -1,12 +1,12 @@
-<h1 class = "profile">Профиль</h1>
+<h1 class = "profile"><%=t('.prof')%></h1>
 <div class="profile">
 <div class="profile_avatar"><img src="/avatars/<%=@user[:avatar]%>.png" height="80%" alt="Ава"></div>
 <h2><%=@user[:firstname]%></h2>
-<h4>Почта <%=@user[:login]%> </h4>
+<h4><%=t('.mail')%> <%=@user[:login]%> </h4>
 </div>
 <br>
 <%=flash[:notice]%>
 <div class = "redactori">
-  <%= link_to "Редактировать данные", edit_user_path(@user), :class => "back_profile" %> |
-  <%= link_to "Назад", home_aut_path, :class => "back_profile" %>
+  <%= link_to t('.edit'), edit_user_path(@user), :class => "back_profile" %> |
+  <%= link_to t('.back'), home_aut_path, :class => "back_profile" %>
 </div>

@@ -12,7 +12,6 @@ RSpec.describe Song, type: :model do
     describe 'create' do
     
         it 'valid params' do
-            p valid_attributes
             expect(Song.new(valid_attributes).valid?).to eq(true)
         end
 

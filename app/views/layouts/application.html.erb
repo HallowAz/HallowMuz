@@ -17,22 +17,22 @@
             <div class = "header_item headerlogo">
                 HallowMuz
             </div>
-            <div class = "header_item headerButton"><%= link_to 'Главная', home_aut_path, :id => "Main"%>
+            <div class = "header_item headerButton"><%= link_to t('header.main'), home_aut_path, :id => "Main"%>
             </div>
-            <div class = "header_item headerButton"><%= link_to 'Моя музыка', library_path, data: {'turbo-method' => :post}, :id => "My_music"%>
+            <div class = "header_item headerButton"><%= link_to t('header.library'), library_path, data: {'turbo-method' => :post}, :id => "My_music"%>
             </div>
             <div class = "header_item">
             <%=form_with url: search_path do |form|%>
-                <%=form.label('Поиск', :class => "lab")%>
+                <%=form.label(t('header.search'), :class => "lab")%>
                 <%=form.text_field(:str, :id => "search_field")%>
-                <%=form.submit 'Найти', :class => "btn btn-primary search_btn", :id => "Search_btn" %>
+                <%=form.submit t('header.btn_search'), :class => "btn btn-primary search_btn", :id => "Search_btn" %>
             <%end%>
             </div>
         </div>
         <div class="header_section">
             <div class = "header_item headerProfileIcon"><%=link_to image_tag("/avatars/#{@user[:avatar]}.png"), profile_path, data: {'turbo-method' => :post}, :id => "profile_icon" %> 
             </div>
-            <div class = "header_item headerButton"><%= link_to 'Выйти', session_log_out_path, :id => "log_out"%>
+            <div class = "header_item headerButton"><%= link_to t('header.logout'), session_log_out_path, :id => "log_out"%>
             </div>
         </div>
       </div>
@@ -42,22 +42,22 @@
             <div class = "header_item headerlogo">
                 HallowMuz
             </div>
-            <div class = "header_item headerButton"><%= link_to 'Главная', root_path%>
+            <div class = "header_item headerButton"><%= link_to t('header.main'), root_path%>
             </div>
-            <div class = "header_item headerButton"><%= link_to 'Моя музыка', library_path%>
+            <div class = "header_item headerButton"><%= link_to t('header.library'), library_path%>
             </div>
             <div class = "header_item">
             <%=form_with url: search_path do |form|%>
-                <%=form.label('Поиск')%>
+                <%=form.label(t('header.search'))%>
                 <%=form.text_field(:str)%>
-                <%=form.submit('Найти', :class => "btn btn-outline-info")%>
+                <%=form.submit(t('header.btn_search'), :class => "btn btn-outline-info")%>
             <%end%>
             </div>        
         </div>
         <div class="header_section">
-            <div class = "header_item headerButton"><%= link_to 'Войти', autorization_path%>
+            <div class = "header_item headerButton"><%= link_to t('header.login'), autorization_path%>
             </div>
-            <div class = "header_item headerButton"><%= link_to 'Регистрация', new_user_path%>
+            <div class = "header_item headerButton"><%= link_to t('header.sign_up'), new_user_path%>
             </div>
         </div>
       </div>

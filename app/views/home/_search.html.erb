@@ -1,7 +1,7 @@
 <div class="search_res">
     <div class="search_res_main">
         <%unless @search_muz.empty?%>
-                <h3 class = "search_category">Результаты поиска</h3>
+                <h3 class = "search_category"><%=t('.result')%></h3>
                 <%count = 0%>
                 <% @search_muz.each do |song|%>
                     <div class="song" id ="song_number_<%=count%>">
@@ -10,14 +10,14 @@
                         </audio>
                         <%=form_with url: adding_path do |form|%>
                         <%=form.hidden_field :song_id, value: song[:id] %>
-                        <%=form.submit('Добавить', :class => 'btn btn-outline-dark')%>
+                        <%=form.submit(t('.add'), :class => 'btn btn-outline-dark')%>
                         <%end%>
                     </div> 
                     <%count+=1%>
                 <%end%>
         <%else%>
-            <h3>Поиск не дал результатов по данному запросу</h3>
+            <h3><%=t('.search_res')%></h3>
         <%end%>
     </div>
-    <%= link_to "Назад", home_aut_path, :class => "back" %>
+    <%= link_to t('.back'), home_aut_path, :class => "back" %>
 </div>

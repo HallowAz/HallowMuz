@@ -1,6 +1,6 @@
 <div class="lib">
     <div class="all_my_songs" id = "all_my_songs">
-    <h3 class = "lib_category">Библиотека</h3>
+    <h3 class = "lib_category"><%=t('.lib')%></h3>
         <%count = 0%>
         <% @music.reverse.each do |song|%>
             <div class="song" id ="song_number_<%=count%>">
@@ -10,7 +10,7 @@
                 <%=form_with url: deleting_path do |form|%>
                 <%=form.hidden_field :song_id, value: song[:id] %>
                 <%=form.hidden_field :count, value: count %>
-                <%=form.submit 'Удалить',  :class => "btn btn-outline-danger"%>
+                <%=form.submit t('.delete'),  :class => "btn btn-outline-danger"%>
                 <%end%>
             </div> 
             <%count += 1%>
@@ -18,7 +18,7 @@
         <br><br>
     </div>
     <div class="playlists">
-        <h3 class = "playlists_category">Плейлисты</h3>
+        <h3 class = "playlists_category"><%=t('.playlists')%></h3>
         <%@user.playlists.each do |playlist|%>
         <%=form_with url: edit_playlist_path, method: :get do |form|%>
             <%=form.hidden_field :name, value: playlist[:name]%>
@@ -27,9 +27,9 @@
             <%end%>
         <%end%>
         <br>
-        <%=link_to 'Создать плейлист', creating_playlist_path, :class => "create_playlist"%>
+        <%=link_to t('.cr_playlist'), creating_playlist_path, :class => "create_playlist"%>
     </div>
-    <%=link_to 'Загрузить песню', load_path, :class => "download_song"%>
-    <%=link_to 'Назад', home_aut_path, :class => "back"%>
+    <%=link_to t('.dwn'), load_path, :class => "download_song"%>
+    <%=link_to t('.back'), home_aut_path, :class => "back"%>
 </div>
 

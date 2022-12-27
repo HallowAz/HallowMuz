@@ -1,0 +1,58 @@
+ru:
+  header:
+    main: "Главная"
+    library: "Моя музыка"
+    search: "Поиск"
+    btn_search: "Найти"
+    login: "Войти"
+    sign_up: "Регистрация"
+    logout: "Выйти"
+  session:
+    autorization:
+      label: "Авторизация"
+      label_login: "Электронная почта"
+      label_password: "Пароль"
+      label_submit: 'Войти'
+      link_sign_up: 'Зарегистрироваться'
+      link_back: 'Назад'
+  home:
+    home:
+      new_songs: "Новинки"
+      add: "Добавить"
+      more: "Ещё..."
+      singers: "Исполнители"
+    home_aut:
+      new_songs: "Новинки"
+      add: "Добавить"
+      more: "Ещё..."
+      singers: "Исполнители"
+    library:
+      lib: "Библиотека"
+      delete: "Удалить"
+      playlists: "Плейлисты"
+      cr_playlist: "Создать плейлист"
+      dwn: "Загрузить песню"
+      back: 'Назад'
+    search:
+      result: "Результаты поиска"
+      add: "Добавить"
+      back: "Назад"
+      search_res: "Поиск не дал результатов по данному запросу"
+    profile:
+      prof: "Профиль"
+      mail: "Эектронная Почта:"
+      edit: "Редактировать данные"
+      back: "Назад"
+    creating_playlist:
+      creating: "Создать плейлист"
+      name: "Название"
+      create: "Создать"
+      back: "Назад"
+    adding_playlist:
+      new_songs: "Новинки"
+      add: "Добавить"
+      back: "Назад"
+    edit_playlist:
+      add: "Добавить песен"
+      delete: "Удалить плейлист"
+      back: "Назад"

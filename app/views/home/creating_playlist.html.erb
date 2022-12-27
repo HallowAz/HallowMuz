@@ -1,15 +1,15 @@
 <div class="creating_playlist_form">
-  <h3>Создание плейлиста</h3>
+  <h3><%=t('.creating')%></h3>
   
   <div class = "creating_playlist_form_url">
     <%=form_with url: creating_playlist_after_path do |form|%>
-    <%=form.label('Название') %>
+    <%=form.label(t('.name')) %>
     <%=form.text_field :name, :id => "creating_playlist_field"%>
-    <%=form.submit('Создать', :class => "btn btn-outline-dark")%>
+    <%=form.submit(t('.create'), :class => "btn btn-outline-dark")%>
   <%end%>
   </div>
 
   <%=form_with url: adding_playlist_path, method: :get do |form|%>
-  <%=link_to "Назад", library_path, data: {'turbo-method' => :post}%>
+  <%=link_to t('.back'), library_path, data: {'turbo-method' => :post}%>
   <%end%>
 </div>

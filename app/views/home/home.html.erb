@@ -1,6 +1,6 @@
 <div class="body_home">
     <div class="home_new_songs" id="home_new_songs">
-        <h3 class = "song_category">Новинки</h3>
+        <h3 class = "song_category"><%=t('.new_songs')%></h3>
         <%count = 0%>
         <%Song.all.reverse.each do |song|%>
             <div class="song" id ="song_number_<%=count%>">
@@ -13,7 +13,7 @@
                 </audio>
                 <%=form_with url: adding_path do |form|%>
                 <%=form.hidden_field :song_id, value: song[:id] %>
-                <%=form.submit('Добавить', :class => 'btn btn-outline-dark', :id => "add_btn_#{count}")%>
+                <%=form.submit(t('.add'), :class => 'btn btn-outline-dark', :id => "add_btn_#{count}")%>
                 <%end%>
             </div>
             <%count+=1%>
@@ -21,12 +21,12 @@
         <%end%>
         <%=form_with url: extra_new_songs_path do |form|%>
         <%=form.hidden_field :check, value: "songs" %>
-        <%=form.submit("Ещё...", :class=>"btn btn-link more_button")%>
+        <%=form.submit(t('.more'), :class=>"btn btn-link more_button")%>
         <%end%>
     </div>
 
     <div class="singers" id="singers">
-    <h3 class = "singer_category">Исполнители</h3>
+    <h3 class = "singer_category"><%=t('.singers')%></h3>
         <%count = 0%>
         <%Singer.all.each do |singer|%>
             <div class="singer">
@@ -50,7 +50,7 @@
         <br>
         <%=form_with url: extra_new_songs_path do |form|%>
         <%=form.hidden_field :check, value: "singers" %>
-        <%=form.submit("Ещё...", :class=>"btn btn-link more_button")%>
+        <%=form.submit(t(".more"), :class=>"btn btn-link more_button")%>
         <%end%>
     </div>
 </div>

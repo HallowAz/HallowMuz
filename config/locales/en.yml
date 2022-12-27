@@ -30,4 +30,63 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  header:
+    main: "Main"
+    library: "My music"
+    search: "Search"
+    btn_search: "Find"
+    login: "Log in"
+    sign_up: "Sign up"
+    logout: "Log out"
+  session:
+    autorization:
+      label: "Authorization"
+      label_login: "Email"
+      label_password: "Password"
+      label_submit: 'Log in'
+      link_sign_up: 'Sign in'
+      link_back: 'Back'
+  home:
+    home:
+      new_songs: "New songs"
+      add: "Add"
+      more: "More..."
+      singers: "Singers"
+    home_aut:
+      new_songs: "New songs"
+      add: "Add"
+      more: "More..."
+      singers: "Singers"
+    library:
+      lib: "Library"
+      delete: "Delete"
+      playlists: "Playlists"
+      cr_playlist: "Create playlist"
+      dwn: "Upload song"
+      back: 'Back'
+    search:
+      result: "Results"
+      add: "Add"
+      back: "Back"
+      search_res: "No results"
+    profile:
+      prof: "Profile"
+      mail: "Email:"
+      edit: "Edit"
+      back: "Back"
+    creating_playlist:
+      creating: "Creating playlist"
+      name: "Name"
+      create: "Create"
+      back: "Back"
+    adding_playlist:
+      new_songs: "New songs"
+      add: "Add"
+      back: "Back"
+    edit_playlist:
+      add: "Add songs"
+      delete: "Delete playlist"
+      back: "Back"
+    
+
+
